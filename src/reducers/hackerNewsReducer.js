@@ -11,11 +11,11 @@ const REQUEST_ARTICLES = 'REQUEST_ARTICLES'
 const requestArticles = async (dispatch) => {
     dispatch({type: PENDING})
 
-    let response = await axios.get('/api/hacker-news')
+    let articles = await axios.get('/api/hacker-news').then((res) => res.data)
 
     dispatch({
         type: REQUEST_ARTICLES,
-        payload: response.data
+        payload: articles
     })
 
 }
